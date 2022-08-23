@@ -32,6 +32,18 @@ public class Stack {
             throw new IllegalStateException();
         return items[count - 1];
     }
+    
+    public int min() {
+        if (isEmpty())
+            throw new IllegalStateException();
+        var range = Arrays.copyOfRange(items, 0, count);
+        int min = range[0];
+        for (int item : range) {
+            if (item < min)
+                min = item;
+        }
+        return min;
+    }
 
     private void resizeArray() {
         if (size == count) {
